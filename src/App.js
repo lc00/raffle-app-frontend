@@ -1,7 +1,9 @@
-import React from "react";
+import React from "react";  
 import "./App.css";
 import UserForm from "./UserForm";
 import Tiers from "./Tiers"
+import TopMessage from './TopMessage'
+import Prizes from './Prizes'
 
 function App() {
   return (
@@ -9,8 +11,13 @@ function App() {
       <div className="top-container">
         <UserForm />
         <Tiers />
-
       </div>
+        <TopMessage />
+        <Prizes />
+        {/* <BottomMessage /> */}
+        {/* <Buttons /> */}
+
+      
     </div>
   );
 }
