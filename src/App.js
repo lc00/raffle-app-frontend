@@ -5,7 +5,7 @@ import Tiers from "./Tiers"
 import TopMessage from './TopMessage'
 import Prizes from './Prizes'
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor() {
     super()
 
@@ -34,25 +34,29 @@ export default class App extends React.Component {
       ]
       
     }
+  }
 
 
     // const handleNameChange = name => event => {
     //   setValues({ ...values, [name]: event.target.value });
     // };
-    return (
-      <div className="App">
-        <div className="top-container">
-          <UserForm />
-          <Tiers />
-        </div>
-          <TopMessage />
-          <Prizes prizes={this.state.prizes}/>
-          {/* <BottomMessage /> */}
-          {/* <Buttons /> */}
+    render() {
+      return (
+        <div className="App">
+          <div className="top-container">
+            <UserForm />
+            <Tiers />
+          </div>
+            <TopMessage />
+            <Prizes prizes={this.state.prizes}/>
+            {/* <BottomMessage /> */}
+            {/* <Buttons /> */}
 
-        
-      </div>
-    );
-  }
+          
+        </div>
+      )
+    }
+  
 }
 
+export default App;
