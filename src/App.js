@@ -5,21 +5,54 @@ import Tiers from "./Tiers"
 import TopMessage from './TopMessage'
 import Prizes from './Prizes'
 
-function App() {
-  return (
-    <div className="App">
-      <div className="top-container">
-        <UserForm />
-        <Tiers />
-      </div>
-        <TopMessage />
-        <Prizes />
-        {/* <BottomMessage /> */}
-        {/* <Buttons /> */}
+export default class App extends React.Component {
+  constructor() {
+    super()
 
+    this.state ={
+      name: "",
+      email: "",
+      donationAmount: "",
+      tiers: {
+        oneDollar: 1,
+        fiveDollar: 10,
+        tenDollar: 25
+      },
+      prizes: [
+        {
+          oneMillionDollar: {
+            img: "http://placecorgi.com/250",
+            currentEntries: 15
+          }
+        },
+        {
+          oneBillionDollars: {
+            img: "http://placecorgi.com/250",
+            currentEntries: 5
+          }
+        }
+      ]
       
-    </div>
-  );
+    }
+
+
+    // const handleNameChange = name => event => {
+    //   setValues({ ...values, [name]: event.target.value });
+    // };
+    return (
+      <div className="App">
+        <div className="top-container">
+          <UserForm />
+          <Tiers />
+        </div>
+          <TopMessage />
+          <Prizes prizes={this.state.prizes}/>
+          {/* <BottomMessage /> */}
+          {/* <Buttons /> */}
+
+        
+      </div>
+    );
+  }
 }
 
-export default App;

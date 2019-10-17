@@ -3,10 +3,8 @@ import Prize from './Prize';
 
 export default function Prizes(props) {
   return (
-    <Prize
-      onClick={() => console.log('onClick')}
-      src=''
-      aspectRatio={(16/9)}
-    />
+    props.prizes.map(prize => {
+      return <Prize props={props}/>
+    })
   )
 }
