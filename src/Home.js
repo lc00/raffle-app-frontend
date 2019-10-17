@@ -8,7 +8,7 @@ export default function Home(props) {
   return (
     <div>
       <div className="top-container">
-        <UserForm />
+        <UserForm info={props.info} allFunc={props.allFunc}/>
         <Tiers />
       </div>
         <TopMessage />

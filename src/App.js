@@ -35,10 +35,26 @@ class App extends React.Component {
     }
   }
 
+  handleNameChange = (name) => {
+    this.setState({name: name})
+  };
 
-    // const handleNameChange = name => event => {
-    //   setValues({ ...values, [name]: event.target.value });
-    // };
+  handleEmailChange = (email) => {
+    this.setState({email: email})
+  };
+
+  handleDonationAmountChange = (donationAmount) =>{
+    this.setState({donationAmount: donationAmount})
+  };
+
+  allFunc() {
+    return {
+      handleNameChange: this.handleNameChange,
+      handleEmailChange: this.handleEmailChange,
+      handleDonationAmountChange: this.handleDonationAmountChange
+    }
+  }
+  
     render() {
       return (
         <div className="App">
@@ -47,7 +63,7 @@ class App extends React.Component {
             <Route 
               path='/' 
               render={() => (
-                <Home info={this.state}/>
+                <Home info={this.state} allFunc={this.allFunc()}/>
               )}
             />
 

@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function UserForm() {
+export default function UserForm(props) {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     name: "",
@@ -29,14 +29,20 @@ export default function UserForm() {
 
   const handleNameChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
+    console.log('props', props)
+    debugger
+    props.allFunc.handleNameChange(event.target.value)
   };
 
   const handleEmailChange = email => event => {
     setValues({ ...values, [email]: event.target.value });
+    props.allFunc.handleEmailChange(event.target.value)
   };
 
   const handleDonationAmountChange = donationAmount => event => {
     setValues({ ...values, [donationAmount]: event.target.value });
+    props.allFunc.handleDonationAmountChange(event.target.value)
+
   };
 
   return (
