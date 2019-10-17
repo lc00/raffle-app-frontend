@@ -11,7 +11,7 @@ export default function Home(props) {
         <UserForm info={props.info} allFunc={props.allFunc}/>
         <Tiers />
       </div>
-        <TopMessage />
+        <TopMessage info={props.info} />
         <Prizes prizes={props.info.prizes} />
         {/* <BottomMessage /> */}
         {/* <Buttons /> */}

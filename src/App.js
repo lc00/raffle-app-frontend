@@ -13,9 +13,9 @@ class App extends React.Component {
       email: "",
       donationAmount: "",
       tiers: {
-        oneDollar: 1,
-        fiveDollar: 10,
-        tenDollar: 25
+        1: 1,
+        5: 10,
+        10: 25
       },
       prizes: [
         {

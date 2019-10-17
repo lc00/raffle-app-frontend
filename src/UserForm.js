@@ -48,6 +48,7 @@ export default function UserForm(props) {
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <TextField
+        required
         id="outlined-name"
         label="Name"
         className={classes.textField}
@@ -57,6 +58,7 @@ export default function UserForm(props) {
         variant="outlined"
       />
       <TextField
+        required
         id="outlined-email"
         label="Email"
         className={classes.textField}
@@ -66,6 +68,7 @@ export default function UserForm(props) {
         variant="outlined"
       />
       <TextField
+        required
         id="outlined-donation-amount"
         label="Donation Amount ($)"
         className={classes.textField}
