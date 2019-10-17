@@ -1,9 +1,8 @@
 import React from "react";  
 import "./App.css";
-import UserForm from "./UserForm";
-import Tiers from "./Tiers"
-import TopMessage from './TopMessage'
-import Prizes from './Prizes'
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from './Home'
 
 class App extends React.Component {
   constructor() {
@@ -43,14 +42,22 @@ class App extends React.Component {
     render() {
       return (
         <div className="App">
-          <div className="top-container">
-            <UserForm />
-            <Tiers />
-          </div>
-            <TopMessage />
-            <Prizes prizes={this.state.prizes}/>
-            {/* <BottomMessage /> */}
-            {/* <Buttons /> */}
+          <Router>
+
+            <Route 
+              path='/' 
+              render={() => (
+                <Home info={this.state}/>
+              )}
+            />
+
+            <Route 
+              path='/summary'
+              render={() => {
+                console.log('summary page')
+              }}
+            />
+          </Router>
 
           
         </div>
