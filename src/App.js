@@ -12,6 +12,8 @@ class App extends React.Component {
       name: "",
       email: "",
       donationAmount: "",
+      topMessage: "",
+      isTicketInputEnabled: false,
       tiers: {
         1: 1,
         5: 10,
@@ -51,15 +53,64 @@ class App extends React.Component {
     this.setState({donationAmount: donationAmount})
   };
 
+  handleTicketInputEnable = (isEnabled) => {
+    this.setState({isTicketInputEnabled: isEnabled})
+  }
+
+  validateEmail(email) {
+    return email.match(/\w+@\w+[.]\w+/)
+  }
+
+  checkUserInfo(info) {
+    let name = info.name
+    let email = info.email
+    let donationAmount = info.donationAmount
+
+    let newStr = "Please enter your ";
+    let arr = [];
+    let emailValidated = false;
+
+    if (!name) arr.push("name");
+    if (!email) arr.push("email");
+    else {
+      emailValidated = this.validateEmail(email);
+      if (!emailValidated) arr.push("email");
+    }
+    if (!donationAmount) arr.push("donation");
+  
+    let result 
+
+    switch (arr.length) {
+      case 1:
+        result = 1
+        break;
+      case 2:
+          result = 2
+        break;
+      case 3:
+          result = 3
+        break;
+      case 0:
+      default:
+          result = 0
+        break;
+    }
+    return [result, arr]
+  }
+
   allFunc() {
     return {
       handleNameChange: this.handleNameChange,
       handleEmailChange: this.handleEmailChange,
-      handleDonationAmountChange: this.handleDonationAmountChange
+      handleDonationAmountChange: this.handleDonationAmountChange,
+      handleTicketInputEnable: this.handleTicketInputEnable,
+      checkUserInfo: this.checkUserInfo,
+      validateEmail: this.validateEmail,
     }
   }
-  
+
     render() {
+
       return (
         <div className="App">
           <Router>

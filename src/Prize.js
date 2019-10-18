@@ -34,6 +34,7 @@ export default function Prize(props) {
       <div>
         <h3>Tickets</h3>
         <TextField
+          disabled
           id="outlined-bare"
           className={classes.textField}
           margin="normal"
