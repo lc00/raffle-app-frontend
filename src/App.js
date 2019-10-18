@@ -19,15 +19,19 @@ class App extends React.Component {
       },
       prizes: [
         {
-          oneMillionDollar: {
+          id: 1,
+          name: "One MILLION Dollars",
+          imageUrl: {
             img: "http://placecorgi.com/250",
-            currentEntries: 15
+            ticketsEntered: 25
           }
         },
         {
-          oneBillionDollars: {
+          id: 2,
+          name: "One BILLION Dollars",
+          imageUrl: {
             img: "http://placecorgi.com/250",
-            currentEntries: 5
+            ticketsEntered: 15
           }
         }
       ]

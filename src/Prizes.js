@@ -3,8 +3,8 @@ import Prize from './Prize';
 
 export default function Prizes(props) {
   return (
-    props.prizes.map(prize => {
-      return <Prize prize={prize}/>
+    props.info.prizes.map(prize => {
+      return <Prize prize={prize} userInfo={props.info}/>
     })
   )
 }
