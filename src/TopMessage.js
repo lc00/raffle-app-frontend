@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function TopMessage(props) {
-  let newStr = "";
+  let newStr = "Please enter your ";
   let arr = [];
   let emailValidated = false;
 
@@ -24,13 +24,13 @@ export default function TopMessage(props) {
 
   switch (arr.length) {
     case 1:
-      newStr = `Please enter your ${arr.join()}.`;
+      newStr += `${arr.join()}.`;
       break;
     case 2:
-      newStr = `Please enter your ${arr.join(' and ')}.`;
+      newStr += `${arr.join(' and ')}.`;
       break;
     case 3:
-      newStr = `Please enter your ${arr[0]}, ${arr[1]}, and ${arr[2]}.`;
+      newStr += `${arr[0]}, ${arr[1]}, and ${arr[2]}.`;
       break;
     case 0:
     default:
