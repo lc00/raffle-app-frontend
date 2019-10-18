@@ -8,15 +8,12 @@ export default function TopMessage(props) {
   switch (result) {
     case 1:
       newStr += `${arr.join()}.`;
-      // this.handleTicketInputEnable(false)
       break;
     case 2:
       newStr += `${arr.join(' and ')}.`;
-      // this.handleTicketInputEnable(false)
       break;
     case 3:
       newStr += `${arr[0]}, ${arr[1]}, and ${arr[2]}.`;
-      // this.handleTicketInputEnable(false)
       break;
     case 0:
     default:

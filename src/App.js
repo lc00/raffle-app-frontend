@@ -13,7 +13,6 @@ class App extends React.Component {
       email: "",
       donationAmount: "",
       topMessage: "",
-      isTicketInputEnabled: false,
       tiers: {
         1: 1,
         5: 10,
