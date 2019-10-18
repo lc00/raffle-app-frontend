@@ -24,8 +24,6 @@ export default function Prize(props) {
 
   const [ticketNum, setTicketNum] = useState("")
 
-
-
   return (
     <div>
       <h4>{props.prize.name}</h4>
@@ -34,7 +32,7 @@ export default function Prize(props) {
       <div>
         <h3>Tickets</h3>
         <TextField
-          disabled
+          disabled={!props.isUserInfoAllEntered}
           id="outlined-bare"
           className={classes.textField}
           margin="normal"
