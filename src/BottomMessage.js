@@ -4,7 +4,6 @@ export default function BottomMessage(props) {
   let message = ''
   let result = props.allFunc.checkTicketsEntered()
 
-  console.log('bottommessage result', result)
   if(result === 0)
     message = `Ready to submit`
   else if (result > 0)

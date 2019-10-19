@@ -76,8 +76,10 @@ class App extends React.Component {
   }
 
   handleTicketNumEntered = (prizeId, num) => {
+    if(num === '') num = 0
+
     num = parseInt(num)
-    if(num > 0) {
+    if(num >= 0) {
       let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
 
       newPrizes.forEach(prize => {
@@ -92,28 +94,19 @@ class App extends React.Component {
   }
 
   checkTicketsEntered = () => {
-    // if checkUserInfo is zero
     let [result] = this.checkUserInfo()
-    
     let totalNum = this.state.tiers[this.state.donationAmount]
 
     const reducer = (accumulator, currentObj) => {
-      console.log('---- reducer currentObj.currentUserTicketsEntered', currentObj.currentUserTicketsEntered)
-      if(currentObj.currentUserTicketsEntered && currentObj.currentUserTicketsEntered > 0) {
-        console.log('---- reducer currentObj.currentUserTicketsEntered', currentObj.currentUserTicketsEntered)
-        accumulator =+ currentObj.currentUserTicketsEntered
-        console.log('accumulator', accumulator)
+      if(currentObj.currentUserTicketsEntered && currentObj.currentUserTicketsEntered >= 0) {
+        accumulator += currentObj.currentUserTicketsEntered
         return accumulator
       }
       return accumulator
     }
 
     let ticketNumEntered = this.state.prizes.reduce(reducer, 0)
-    console.log('totalNum', totalNum)
-    console.log('ticketNumEntered --- ', ticketNumEntered)
-
     let calResult = totalNum - ticketNumEntered
-
     let response = null
 
     if(result === 0) {
@@ -164,7 +157,6 @@ class App extends React.Component {
     initialPayLoad.tiers.forEach(tier => {
       tiers[parseInt(tier['amount'])] = tier['tickets']
     })
-    console.log('tiers', tiers)
 
     this.setState({
       prizes: initialPayLoad.prizes,
