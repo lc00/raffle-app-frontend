@@ -36,18 +36,19 @@ class App extends React.Component {
     this.setState({isTicketInputEnabled: isEnabled})
   }
 
-  validateEmail(email) {
+  validateEmail = (email) => {
     return email.match(/\w+@\w+[.]\w+/)
   }
 
-  checkUserInfo(info) {
-    let name = info.name
-    let email = info.email
-    let donationAmount = info.donationAmount
+  checkUserInfo = () => {
+    let name = this.state.name
+    let email = this.state.email
+    let donationAmount = this.state.donationAmount
 
-    let newStr = "Please enter your ";
     let arr = [];
     let emailValidated = false;
+
+    console.log('this', this)
 
     if (!name) arr.push("name");
     if (!email) arr.push("email");
@@ -101,16 +102,25 @@ class App extends React.Component {
     let response = payloadSample()
     let initialPayLoad = response.initialPayLoad
     console.log('initialPayLoad', initialPayLoad)
+
+
+
+    let tiers = {}
+    initialPayLoad.tiers.forEach(tier => {
+      tiers[parseInt(tier['amount'])] = tier['tickets']
+    })
+    console.log('tiers', tiers)
+
     this.setState({
       prizes: initialPayLoad.prizes,
-      tiers: initialPayLoad.tiers
+      tiers: tiers
 
     })
   }
 
 
     render() {
-
+console.log('this.state --- render()', this.state)
       return (
         <div className="App">
           <Router>

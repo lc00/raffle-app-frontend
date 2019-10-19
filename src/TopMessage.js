@@ -3,9 +3,13 @@ import React from "react";
 export default function TopMessage(props) {
   let newStr = "Please enter your ";
   const [result, arr] = props.allFunc.checkUserInfo(props.info)
-
-    
+    console.log('result', result)
+    console.log('arr', arr)
   switch (result) {
+    case 0:
+        let number = props.info.tiers[props.info.donationAmount]
+        newStr = `Thanks! You have ${number} tickets to spend.`;
+        break;
     case 1:
       newStr += `${arr.join()}.`;
       break;
@@ -15,9 +19,8 @@ export default function TopMessage(props) {
     case 3:
       newStr += `${arr[0]}, ${arr[1]}, and ${arr[2]}.`;
       break;
-    case 0:
     default:
-      newStr = `Thanks! You have 1 tickets to spend.`;
+      newStr = ''
       break;
   }
 

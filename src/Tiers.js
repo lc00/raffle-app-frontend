@@ -1,9 +1,16 @@
 import React from "react";
 
 export default function Tier(props) {
-  const tiers = props.info.tiers.map(item => {
-    return <h3>${item.amount}: {item.tickets} tickets</h3>
-  })
+  console.log('props', props)
+  // const tiers = props.info.tiers.map(item => {
+  //   return <h3>${Object.keys(item)}: {Object.values(item)} tickets</h3>
+  // })
+
+  const tiers = []
+
+  for(let i in props.info.tiers) {
+    tiers.push(<h3>${i}: {props.info.tiers[i]} tickets</h3>)
+  }
 
   return (
     <div>
