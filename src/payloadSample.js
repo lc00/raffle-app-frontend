@@ -18,7 +18,7 @@ export default function payload() {
         id: 1,
         name: "One MILLION Dollars",
         imageUrl:
-          "http://placecorgi.com/250",
+          "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
         ticketsEntered: 10,
         wonBy: null
       },

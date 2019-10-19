@@ -10,13 +10,12 @@ class App extends React.Component {
     super()
 
     this.state ={
-      name: "",
-      email: "",
-      donationAmount: "",
+      name: "meow",
+      email: "me@ow.com",
+      donationAmount: "5",
       topMessage: "",
       tiers: [],
-      prizes: []
-      
+      prizes: [],      
     }
   }
 
@@ -48,8 +47,6 @@ class App extends React.Component {
     let arr = [];
     let emailValidated = false;
 
-    console.log('this', this)
-
     if (!name) arr.push("name");
     if (!email) arr.push("email");
     else {
@@ -78,6 +75,62 @@ class App extends React.Component {
     return [result, arr]
   }
 
+  handleTicketNumEntered = (prizeId, num) => {
+    num = parseInt(num)
+    if(num > 0) {
+      let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
+
+      newPrizes.forEach(prize => {
+        if(prize.id === prizeId) {
+          return prize['currentUserTicketsEntered'] = num
+        }
+      })
+
+      this.setState({prizes: newPrizes})
+    }
+      
+  }
+
+  checkTicketsEntered = () => {
+    // if checkUserInfo is zero
+    let [result] = this.checkUserInfo()
+    
+    let totalNum = this.state.tiers[this.state.donationAmount]
+
+    const reducer = (accumulator, currentObj) => {
+      console.log('---- reducer currentObj.currentUserTicketsEntered', currentObj.currentUserTicketsEntered)
+      if(currentObj.currentUserTicketsEntered && currentObj.currentUserTicketsEntered > 0) {
+        console.log('---- reducer currentObj.currentUserTicketsEntered', currentObj.currentUserTicketsEntered)
+        accumulator =+ currentObj.currentUserTicketsEntered
+        console.log('accumulator', accumulator)
+        return accumulator
+      }
+      return accumulator
+    }
+
+    let ticketNumEntered = this.state.prizes.reduce(reducer, 0)
+    console.log('totalNum', totalNum)
+    console.log('ticketNumEntered --- ', ticketNumEntered)
+
+    let calResult = totalNum - ticketNumEntered
+
+    let response = null
+
+    if(result === 0) {
+      if(calResult === 0)
+        response = 0
+      else if (calResult > 0)
+        response = calResult
+      else if (calResult < 0)
+        response = calResult
+      // 
+      else 
+        response = null
+    }
+    
+    return response
+  }
+
   allFunc() {
     return {
       handleNameChange: this.handleNameChange,
@@ -86,6 +139,8 @@ class App extends React.Component {
       handleTicketInputEnable: this.handleTicketInputEnable,
       checkUserInfo: this.checkUserInfo,
       validateEmail: this.validateEmail,
+      checkTicketsEntered: this.checkTicketsEntered,
+      handleTicketNumEntered: this.handleTicketNumEntered
     }
   }
 

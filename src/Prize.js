@@ -39,7 +39,12 @@ export default function Prize(props) {
           variant="outlined"
           inputProps={{ 'aria-label': 'bare' }}
           value={ticketNum}
-          onChange={e => setTicketNum(e.target.value)}
+          onChange={(e) => {
+            setTicketNum(e.target.value)
+            props.allFunc.handleTicketNumEntered(props.prize.id, e.target.value)
+          }
+        }
+          
         />
       </div>
     </div>
