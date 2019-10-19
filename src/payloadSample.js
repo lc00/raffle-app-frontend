@@ -18,10 +18,19 @@ export default function payload() {
         id: 1,
         name: "One MILLION Dollars",
         imageUrl:
+          "http://placecorgi.com/250",
+        ticketsEntered: 10,
+        wonBy: null
+      },
+      {
+        id: 2,
+        name: "One BILLION Dollars",
+        imageUrl:
           "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
         ticketsEntered: 25,
         wonBy: null
       }
+
     ],
     tiers: [
       {
@@ -64,5 +73,8 @@ export default function payload() {
       }
     ]
   };
-  return;
+  return {
+    initialPayLoad, 
+    postForEntry
+  }
 }

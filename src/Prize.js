@@ -27,8 +27,8 @@ export default function Prize(props) {
   return (
     <div>
       <h4>{props.prize.name}</h4>
-      <img src={props.prize.imageUrl.img} alt='prize'></img>
-      <h5>Current Entries: {props.prize.imageUrl.ticketsEntered}</h5>
+      <img height='250' width='250' src={props.prize.imageUrl} alt='prize'></img>
+      <h5>Current Entries: {props.prize.ticketsEntered}</h5>
       <div>
         <h3>Tickets</h3>
         <TextField

@@ -1,5 +1,6 @@
 import React from "react";  
 import "./App.css";
+import payloadSample from './payloadSample'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './Home'
@@ -13,29 +14,8 @@ class App extends React.Component {
       email: "",
       donationAmount: "",
       topMessage: "",
-      tiers: {
-        1: 1,
-        5: 10,
-        10: 25
-      },
-      prizes: [
-        {
-          id: 1,
-          name: "One MILLION Dollars",
-          imageUrl: {
-            img: "http://placecorgi.com/250",
-            ticketsEntered: 25
-          }
-        },
-        {
-          id: 2,
-          name: "One BILLION Dollars",
-          imageUrl: {
-            img: "http://placecorgi.com/250",
-            ticketsEntered: 15
-          }
-        }
-      ]
+      tiers: [],
+      prizes: []
       
     }
   }
@@ -107,6 +87,27 @@ class App extends React.Component {
       validateEmail: this.validateEmail,
     }
   }
+
+
+  componentDidMount() {
+    // axios.get('https://localhost:5000/')
+    //   .then(response => {
+    //     console.log(`first load, response.data, ${response.data}`)
+    //   })
+    //   .catch(err => {
+    //     console.error(`first load, error ${err}`)
+    //   })
+
+    let response = payloadSample()
+    let initialPayLoad = response.initialPayLoad
+    console.log('initialPayLoad', initialPayLoad)
+    this.setState({
+      prizes: initialPayLoad.prizes,
+      tiers: initialPayLoad.tiers
+
+    })
+  }
+
 
     render() {
 

@@ -9,7 +9,7 @@ export default function Home(props) {
     <div>
       <div className="top-container">
         <UserForm info={props.info} allFunc={props.allFunc}/>
-        <Tiers />
+        <Tiers info={props.info}/>
       </div>
         <TopMessage info={props.info} allFunc={props.allFunc}/>
         <Prizes info={props.info} allFunc={props.allFunc}/>
