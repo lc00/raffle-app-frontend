@@ -4,6 +4,7 @@ import Tiers from "./Tiers"
 import TopMessage from './TopMessage'
 import Prizes from './Prizes'
 import BottomMessage from './BottomMessage'
+import Buttons from './Buttons'
 
 export default function Home(props) {
   return (
@@ -15,7 +16,7 @@ export default function Home(props) {
         <TopMessage info={props.info} allFunc={props.allFunc}/>
         <Prizes info={props.info} allFunc={props.allFunc}/>
         <BottomMessage info={props.info} allFunc={props.allFunc} />
-        {/* <Buttons /> */}
+        <Buttons info={props.info} allFunc={props.allFunc}  />
     </div>
   )
 }
