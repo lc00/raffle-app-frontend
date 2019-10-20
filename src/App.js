@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state ={
       name: "meow",
       email: "me@ow.com",
-      donationAmount: "5",
+      donationAmount: "",
       topMessage: "",
       tiers: [],
       prizes: [],      
