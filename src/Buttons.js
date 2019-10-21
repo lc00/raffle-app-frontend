@@ -11,8 +11,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
+
 export default function Buttons(props) {
   const classes = useStyles();
+
+  // const handleClearTicketsButon = (props) => {
+  //   console.log('props.allFunc...1', props.allFunc)
+
+  //   props.allFunc.handleClearTicketNum()
+  // }
+
+  console.log('props.allFunc...2', props.allFunc)
 
   let result = props.allFunc.checkTicketsEntered()
 
@@ -28,6 +38,15 @@ export default function Buttons(props) {
         className={classes.button}
       >
         Submit
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        disabled={!result}
+        className={classes.button}
+        onClick={props.allFunc.handleClearTicketNum}
+      >
+        Clear Tickets
       </Button>
     </div>
   );

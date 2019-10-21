@@ -93,6 +93,25 @@ class App extends React.Component {
       
   }
 
+  handleClearTicketNum = () => {
+    
+      let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
+
+      newPrizes.forEach(prize => {
+        console.log('prize', prize)
+        if(prize.currentUserTicketsEntered) {
+          return prize['currentUserTicketsEntered'] = ''
+        }
+      })
+
+      console.log('newPrizes', newPrizes)
+
+      this.setState({prizes: newPrizes})
+    
+      
+  }
+
+
   checkTicketsEntered = () => {
     let [result] = this.checkUserInfo()
     let totalNum = this.state.tiers[this.state.donationAmount]
@@ -133,7 +152,8 @@ class App extends React.Component {
       checkUserInfo: this.checkUserInfo,
       validateEmail: this.validateEmail,
       checkTicketsEntered: this.checkTicketsEntered,
-      handleTicketNumEntered: this.handleTicketNumEntered
+      handleTicketNumEntered: this.handleTicketNumEntered,
+      handleClearTicketNum: this.handleClearTicketNum
     }
   }
 
