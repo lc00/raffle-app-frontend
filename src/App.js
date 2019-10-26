@@ -124,15 +124,13 @@ console.log('handleTicketNumEntered ', prizeId, num)
     let [result] = this.checkUserInfo()
     let totalNum = this.state.tiers[this.state.donationAmount]
 
-    const reducer = (accumulator, currentObj) => {
-      if(currentObj.currentUserTicketsEntered && currentObj.currentUserTicketsEntered >= 0) {
-        accumulator += currentObj.currentUserTicketsEntered
-        return accumulator
-      }
-      return accumulator
+    const reducer = (accumulator, val) => {
+      return accumulator + val
     }
 
-    let ticketNumEntered = this.state.prizes.reduce(reducer, 0)
+    const values = Object.values(this.state.entries)
+
+    let ticketNumEntered = values.reduce(reducer, 0)
     let calResult = totalNum - ticketNumEntered
     let response = null
 
