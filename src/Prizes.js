@@ -11,8 +11,8 @@ export default function Prizes(props) {
 
   return (
     props.info.prizes.map(prize => {
-      return <Prize prize={prize} info={props.info} allFunc={props.allFunc}
-      isUserInfoAllEntered={isUserInfoAllEntered}
+      return <Prize key={prize.id} info={props.info} allFunc={props.allFunc}
+      isUserInfoAllEntered={isUserInfoAllEntered} {...props} {...prize}
       />
     })
   )

@@ -14,7 +14,7 @@ export default function Home(props) {
         <Tiers info={props.info}/>
       </div>
         <TopMessage info={props.info} allFunc={props.allFunc}/>
-        <Prizes info={props.info} allFunc={props.allFunc}/>
+        <Prizes info={props.info} allFunc={props.allFunc} {...props}/>
         <BottomMessage info={props.info} allFunc={props.allFunc} />
         <Buttons info={props.info} allFunc={props.allFunc}  />
     </div>

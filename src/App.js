@@ -15,8 +15,17 @@ class App extends React.Component {
       donationAmount: "",
       topMessage: "",
       tiers: [],
-      prizes: [],      
+      prizes: [],
+      ticketNum: 0,
+      entries: {
+
+      }      
     }
+  }
+
+  setTicketNum = (ticketNum) => {
+    // const [ticketNum, setTicketNum] = useState("")
+    this.setState({ticketNum: ticketNum})
   }
 
   handleNameChange = (name) => {
@@ -78,36 +87,35 @@ class App extends React.Component {
   handleTicketNumEntered = (prizeId, num) => {
     if(num === '') num = 0
 
-    num = parseInt(num)
-    if(num >= 0) {
-      let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
+    num = Math.abs(parseInt(num))
+      // let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
 
-      newPrizes.forEach(prize => {
-        if(prize.id === prizeId) {
-          return prize['currentUserTicketsEntered'] = num
+      // newPrizes.forEach(prize => {
+      //   if(prize.id === prizeId) {
+      //     return prize['currentUserTicketsEntered'] = num
+      //   }
+      // })
+
+      /*
+        entries: {
+          id: num
         }
-      })
+      */
 
-      this.setState({prizes: newPrizes})
-    }
+console.log('handleTicketNumEntered ', prizeId, num)
+      const entries = {...this.state.entries, [prizeId+'']: num}
+      
+      this.setState({entries: entries})
+    
       
   }
 
   handleClearTicketNum = () => {
+
+
     
-      let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
+    this.setState({entries: {}})
 
-      newPrizes.forEach(prize => {
-        console.log('prize', prize)
-        if(prize.currentUserTicketsEntered) {
-          return prize['currentUserTicketsEntered'] = ''
-        }
-      })
-
-      console.log('newPrizes', newPrizes)
-
-      this.setState({prizes: newPrizes})
-    
       
   }
 
@@ -153,7 +161,8 @@ class App extends React.Component {
       validateEmail: this.validateEmail,
       checkTicketsEntered: this.checkTicketsEntered,
       handleTicketNumEntered: this.handleTicketNumEntered,
-      handleClearTicketNum: this.handleClearTicketNum
+      handleClearTicketNum: this.handleClearTicketNum,
+      setTicketNum: this.setTicketNum
     }
   }
 
@@ -195,7 +204,7 @@ console.log('this.state --- render()', this.state)
             <Route 
               path='/' 
               render={() => (
-                <Home info={this.state} allFunc={this.allFunc()}/>
+                <Home info={this.state} allFunc={this.allFunc()} {...this.state}/>
               )}
             />
 

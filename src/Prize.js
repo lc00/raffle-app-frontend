@@ -22,13 +22,15 @@ const useStyles = makeStyles(theme => ({
 export default function Prize(props) {
   const classes = useStyles();
 
-  const [ticketNum, setTicketNum] = useState("")
+  let entry = props.entries[props.id] 
+    ? props.entries[props.id]
+    : ''
 
   return (
     <div>
-      <h4>{props.prize.name}</h4>
-      <img height='250' width='250' src={props.prize.imageUrl} alt='prize'></img>
-      <h5>Current Entries: {props.prize.ticketsEntered}</h5>
+      <h4>{props.name}</h4>
+      <img height='250' width='250' src={props.imageUrl} alt='prize'></img>
+      <h5>Current Entries: {props.ticketsEntered}</h5>
       <div>
         <h3>Tickets</h3>
         <TextField
@@ -38,10 +40,10 @@ export default function Prize(props) {
           margin="normal"
           variant="outlined"
           inputProps={{ 'aria-label': 'bare' }}
-          value={ticketNum}
+          value={entry}
           onChange={(e) => {
-            setTicketNum(e.target.value)
-            props.allFunc.handleTicketNumEntered(props.prize.id, e.target.value)
+            // props.allFunc.setTicketNum(e.target.value)
+            props.allFunc.handleTicketNumEntered(props.id, e.target.value)
           }
         }
           

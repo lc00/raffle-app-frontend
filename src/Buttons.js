@@ -34,7 +34,7 @@ export default function Buttons(props) {
       <Button
         variant="contained"
         color="secondary"
-        disabled={!result}
+        // disabled={!result}
         className={classes.button}
       >
         Submit
@@ -42,7 +42,7 @@ export default function Buttons(props) {
       <Button
         variant="contained"
         color="secondary"
-        disabled={!result}
+        // disabled={!result}
         className={classes.button}
         onClick={props.allFunc.handleClearTicketNum}
       >
