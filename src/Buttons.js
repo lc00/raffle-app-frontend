@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Buttons(props) {
+
+  let history = useHistory();
+
   const classes = useStyles();
 
   // const handleClearTicketsButon = (props) => {
@@ -41,7 +44,6 @@ export default function Buttons(props) {
         )
       }
     })
-
     const info = {
       user: {
         name: props.info.name,
@@ -64,8 +66,8 @@ export default function Buttons(props) {
     
     // assume it's success 
 
-console.log('hiii')
-    return <Redirect to='/summary' />
+
+    history.push('/summary')
 
   }
 

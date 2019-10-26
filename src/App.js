@@ -197,6 +197,7 @@ class App extends React.Component {
           <Router>
 
             <Route 
+              exact
               path='/' 
               render={() => (
                 <Home info={this.state} allFunc={this.allFunc()}/>
