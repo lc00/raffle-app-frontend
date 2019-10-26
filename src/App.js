@@ -13,8 +13,8 @@ class App extends React.Component {
 
     this.state ={
       id: null,
-      name: "meow",
-      email: "me@ow.com",
+      name: "",
+      email: "",
       donationAmount: "",
       topMessage: "",
       tiers: [],

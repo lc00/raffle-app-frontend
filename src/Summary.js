@@ -14,11 +14,9 @@ console.log('props.info', props.info)
   return (
     <div>
       <h3>Here's your summary:</h3>
-      <p>
-        {props.info.name}
-        {props.info.email}
-        {props.info.donationAmount}
-      </p>
+      <h5>name: {props.info.name}</h5>
+      <h5>email: {props.info.email}</h5>
+      <h5>donation: {props.info.donationAmount}</h5>
       <div>
         {test}
         {/* prizesEntered.map(prize => {

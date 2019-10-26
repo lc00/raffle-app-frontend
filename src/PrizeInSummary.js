@@ -9,7 +9,7 @@ export default function PrizeInSummary (props) {
       </h5>
       <img height='250' width='250' src={props.prize.imageUrl} alt='prize'></img>
       <h5>
-        {props.prize.currentUserTicketsEntered}
+        tickets entered: {props.prize.currentUserTicketsEntered}
       </h5>
     </div>
   )
