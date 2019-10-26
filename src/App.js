@@ -2,20 +2,24 @@ import React from "react";
 import "./App.css";
 import payloadSample from './payloadSample'
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Home from './Home'
+import Summary from './Summary'
+import axios from 'axios'
 
 class App extends React.Component {
   constructor() {
     super()
 
     this.state ={
+      id: null,
       name: "meow",
       email: "me@ow.com",
       donationAmount: "",
       topMessage: "",
       tiers: [],
-      prizes: [],      
+      prizes: [],
+      isSubmitted: false      
     }
   }
 
@@ -153,6 +157,7 @@ class App extends React.Component {
       validateEmail: this.validateEmail,
       checkTicketsEntered: this.checkTicketsEntered,
       handleTicketNumEntered: this.handleTicketNumEntered,
+      // handleSubmitButton: this.handleSubmitButton,
       handleClearTicketNum: this.handleClearTicketNum
     }
   }
@@ -187,7 +192,6 @@ class App extends React.Component {
 
 
     render() {
-console.log('this.state --- render()', this.state)
       return (
         <div className="App">
           <Router>
@@ -201,9 +205,9 @@ console.log('this.state --- render()', this.state)
 
             <Route 
               path='/summary'
-              render={() => {
-                console.log('summary page')
-              }}
+              render={() => (
+                <Summary info={this.state} />
+              )}
             />
           </Router>
 
