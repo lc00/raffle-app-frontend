@@ -2,7 +2,7 @@ import React from "react";
 
 export default function BottomMessage(props) {
   let message = ''
-  let result = props.allFunc.checkTicketsEntered()
+  let result = props.checkTicketsEntered()
 
   if(result === 0)
     message = `Ready to submit`

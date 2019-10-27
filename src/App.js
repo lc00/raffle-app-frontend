@@ -211,14 +211,14 @@ class App extends React.Component {
               exact
               path='/' 
               render={() => (
-                <Home info={this.state} allFunc={this.allFunc()} {...this.state}/>
+                <Home {...this.state} {...this.allFunc()} />
               )}
             />
 
             <Route 
               path='/summary'
               render={() => (
-                <Summary {...this.state} {...this.allFunc()} />
+                <Summary {...this.state}  />
               )}
             />
           </Router>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";  
+import React from "react";  
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -42,8 +42,7 @@ export default function Prize(props) {
           inputProps={{ 'aria-label': 'bare' }}
           value={entry}
           onChange={(e) => {
-            // props.allFunc.setTicketNum(e.target.value)
-            props.allFunc.handleTicketNumEntered(props.id, e.target.value)
+            props.handleTicketNumEntered(props.id, e.target.value)
           }
         }
           

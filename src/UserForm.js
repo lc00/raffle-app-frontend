@@ -31,17 +31,17 @@ export default function UserForm(props) {
   const handleNameChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
     debugger
-    props.allFunc.handleNameChange(event.target.value)
+    props.handleNameChange(event.target.value)
   };
 
   const handleEmailChange = email => event => {
     setValues({ ...values, [email]: event.target.value });
-    props.allFunc.handleEmailChange(event.target.value)
+    props.handleEmailChange(event.target.value)
   };
 
   const handleDonationAmountChange = donationAmount => event => {
     setValues({ ...values, [donationAmount]: event.target.value });
-    props.allFunc.handleDonationAmountChange(event.target.value)
+    props.handleDonationAmountChange(event.target.value)
 
   };
 

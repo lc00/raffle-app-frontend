@@ -10,18 +10,18 @@ export default function Home(props) {
   return (
     <div>
       <div className="top-container">
-        <UserForm info={props.info} allFunc={props.allFunc}/>
-        <Tiers info={props.info}/>
+        <UserForm {...props} {...props.allFunc}/>
+        <Tiers {...props}/>
       </div>
       <div className='top-message-container'>
-        <TopMessage info={props.info} allFunc={props.allFunc}/>
+        <TopMessage {...props} {...props.allFunc}/>
       </div>
         <div className='prizes-container'>
-          <Prizes info={props.info} allFunc={props.allFunc} {...props}/>
+          <Prizes {...props} {...props.allFunc} />
         </div>
-        <BottomMessage info={props.info} allFunc={props.allFunc} />
+        <BottomMessage {...props} {...props.allFunc} />
         <div className='buttons-container'>
-          <Buttons  info={props.info} allFunc={props.allFunc}  />
+          <Buttons  {...props} {...props.allFunc}  />
         </div>
     </div>
   )
