@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -13,32 +14,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-
 export default function Buttons(props) {
   let history = useHistory();
   const classes = useStyles();
 
   const handleSubmitButton = () => {
-    const url = `https://localhost:5000/raffles/${props.info.id}/entry`
+    const url = `https://localhost:8000/raffles/${props.info.id}/entry`
     const entries = []
 
-    // props.entries.forEach(entry => {
-    //     entries.push(
-    //       {
-    //         prize: {
-    //           id: prizeId
-    //         },
-    //         tickets: prize['currentUserTicketsEntered']
-    //       }
-    //     )
-    
-    // })
     console.log('props', props)
-    // console.log('props.entries', props.entries)
 
     for (let i in props.info.entries) {
-      console.log('i', i)
       entries.push(
         {
           prize: {
@@ -62,19 +48,16 @@ export default function Buttons(props) {
 
     console.log('info', info)
 
-    // axios.post(url, info)
-    //   .then(response => {
-    //     console.log(`post request, response.data, ${response.data}`)
-    //     this.setState({isSubmitted: true})
-    //   })
-    //   .catch(err => {
-    //     console.error(`post request, error ${err}`)
-    //   })
+    axios.post(url, info)
+      .then(response => {
+        console.log(`post request, response.data, ${response.data}`)
+        history.push('/summary')
+      })
+      .catch(err => {
+        console.error(`post request, error ${err}`)
+      })
     
-    // assume it's success 
 
-
-    history.push('/summary')
   }
 
 

@@ -5,6 +5,7 @@ import payloadSample from './payloadSample'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './Home'
 import Summary from './Summary'
+import axios from 'axios'
 
 class App extends React.Component {
   constructor() {
@@ -176,30 +177,46 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    // axios.get('https://localhost:5000/')
-    //   .then(response => {
-    //     console.log(`first load, response.data, ${response.data}`)
-    //   })
-    //   .catch(err => {
-    //     console.error(`first load, error ${err}`)
-    //   })
+    axios.get('https://localhost:8000/')
+      .then(response => {
+        console.log(`first load, response.data, ${response.data}`)
 
-    let response = payloadSample()
-    let initialPayLoad = response.initialPayLoad
-    console.log('initialPayLoad', initialPayLoad)
+        let initialPayLoad = response.data
+        console.log('initialPayLoad', initialPayLoad)
+    
+        let tiers = {}
+        initialPayLoad.tiers.forEach(tier => {
+          tiers[parseInt(tier['amount'])] = tier['tickets']
+        })
+    
+        this.setState({
+          prizes: initialPayLoad.prizes,
+          tiers: tiers
+    
+        })
 
+      })
+      .catch(err => {
+        console.error(`first load, error ${err}`)
+      })
 
+      /* 
+      this is the temp code to retrieve mock data 
+      */
+    // let response = payloadSample()
+    // let initialPayLoad = response.initialPayLoad
+    // console.log('initialPayLoad', initialPayLoad)
 
-    let tiers = {}
-    initialPayLoad.tiers.forEach(tier => {
-      tiers[parseInt(tier['amount'])] = tier['tickets']
-    })
+    // let tiers = {}
+    // initialPayLoad.tiers.forEach(tier => {
+    //   tiers[parseInt(tier['amount'])] = tier['tickets']
+    // })
 
-    this.setState({
-      prizes: initialPayLoad.prizes,
-      tiers: tiers
+    // this.setState({
+    //   prizes: initialPayLoad.prizes,
+    //   tiers: tiers
 
-    })
+    // })
   }
 
 
