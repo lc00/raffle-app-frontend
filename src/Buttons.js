@@ -34,15 +34,17 @@ export default function Buttons(props) {
     //     )
     
     // })
+    console.log('props', props)
+    // console.log('props.entries', props.entries)
 
-    for (let i in props.entries) {
+    for (let i in props.info.entries) {
       console.log('i', i)
       entries.push(
         {
           prize: {
             id: i
           },
-          tickets: props.entries[i]
+          tickets: props.info.entries[i]
         }
       )
     }
@@ -57,6 +59,8 @@ export default function Buttons(props) {
       },
       entries: entries
     }
+
+    console.log('info', info)
 
     // axios.post(url, info)
     //   .then(response => {
