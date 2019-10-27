@@ -27,7 +27,7 @@ export default function Prize(props) {
     : ''
 
   return (
-    <div>
+    <div className='prize-container'>
       <h4>{props.name}</h4>
       <img height='250' width='250' src={props.imageUrl} alt='prize'></img>
       <h5>Current Entries: {props.ticketsEntered}</h5>

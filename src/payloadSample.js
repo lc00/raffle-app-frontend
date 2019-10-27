@@ -16,7 +16,7 @@ export default function payload() {
     prizes: [
       {
         id: 1,
-        name: "One MILLION Dollars",
+        name: "One THOUSAND Dollars",
         imageUrl:
           "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
         ticketsEntered: 10,
@@ -24,13 +24,52 @@ export default function payload() {
       },
       {
         id: 2,
+        name: "Ten THOUSAND Dollars",
+        imageUrl:
+          "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
+        ticketsEntered: 25,
+        wonBy: null
+      },
+      {
+        id: 3,
+        name: "One Hundred THOUSAND Dollars",
+        imageUrl:
+          "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
+        ticketsEntered: 10,
+        wonBy: null
+      },
+      {
+        id: 4,
+        name: "One MILLION Dollars",
+        imageUrl:
+          "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
+        ticketsEntered: 25,
+        wonBy: null
+      },
+      {
+        id: 5,
+        name: "One BILLION Dollars",
+        imageUrl:
+          "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
+        ticketsEntered: 25,
+        wonBy: null
+      },
+      {
+        id: 6,
+        name: "One MILLION Dollars",
+        imageUrl:
+          "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
+        ticketsEntered: 25,
+        wonBy: null
+      },
+      {
+        id: 7,
         name: "One BILLION Dollars",
         imageUrl:
           "https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg",
         ticketsEntered: 25,
         wonBy: null
       }
-
     ],
     tiers: [
       {
