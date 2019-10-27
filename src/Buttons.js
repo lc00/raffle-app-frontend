@@ -83,7 +83,7 @@ export default function Buttons(props) {
     <div>
       <Button
         variant="contained"
-        color="secondary"
+        color="primary"
         // disabled={!result}
         className={classes.button}
         onClick={handleSubmitButton}
@@ -92,7 +92,7 @@ export default function Buttons(props) {
       </Button>
       <Button
         variant="contained"
-        color="secondary"
+        color="primary"
         // disabled={!result}
         className={classes.button}
         onClick={props.allFunc.handleClearTicketNum}
