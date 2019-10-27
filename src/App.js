@@ -4,6 +4,7 @@ import payloadSample from './payloadSample'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './Home'
+import Summary from './Summary'
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +13,7 @@ class App extends React.Component {
     this.state ={
       name: "meow",
       email: "me@ow.com",
-      donationAmount: "",
+      donationAmount: "5",
       topMessage: "",
       tiers: [],
       prizes: [],
@@ -102,7 +103,6 @@ class App extends React.Component {
         }
       */
 
-console.log('handleTicketNumEntered ', prizeId, num)
       const entries = {...this.state.entries, [prizeId+'']: num}
       
       this.setState({entries: entries})
@@ -149,6 +149,15 @@ console.log('handleTicketNumEntered ', prizeId, num)
     return response
   }
 
+  getPrizeInfo = (id) => {
+    for(let i = 0; i <= this.state.prizes.length; i++) {
+      if(this.state.prizes[i].id === parseInt(id)) {
+        return this.state.prizes[i]
+      }
+    }
+    return null
+  }
+
   allFunc() {
     return {
       handleNameChange: this.handleNameChange,
@@ -160,7 +169,8 @@ console.log('handleTicketNumEntered ', prizeId, num)
       checkTicketsEntered: this.checkTicketsEntered,
       handleTicketNumEntered: this.handleTicketNumEntered,
       handleClearTicketNum: this.handleClearTicketNum,
-      setTicketNum: this.setTicketNum
+      setTicketNum: this.setTicketNum,
+      getPrizeInfo: this.getPrizeInfo
     }
   }
 
@@ -194,12 +204,11 @@ console.log('handleTicketNumEntered ', prizeId, num)
 
 
     render() {
-console.log('this.state --- render()', this.state)
       return (
         <div className="App">
           <Router>
-
             <Route 
+              exact
               path='/' 
               render={() => (
                 <Home info={this.state} allFunc={this.allFunc()} {...this.state}/>
@@ -208,9 +217,9 @@ console.log('this.state --- render()', this.state)
 
             <Route 
               path='/summary'
-              render={() => {
-                console.log('summary page')
-              }}
+              render={() => (
+                <Summary {...this.state} {...this.allFunc()} />
+              )}
             />
           </Router>
 

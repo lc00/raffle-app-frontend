@@ -3,8 +3,7 @@ import React from "react";
 export default function TopMessage(props) {
   let newStr = "Please enter your ";
   const [result, arr] = props.allFunc.checkUserInfo(props.info)
-    console.log('result', result)
-    console.log('arr', arr)
+
   switch (result) {
     case 0:
         let number = props.info.tiers[props.info.donationAmount]

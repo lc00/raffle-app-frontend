@@ -8,9 +8,9 @@ export default function Tiers(props) {
   }
 
   return (
-    <div class='tiers-container'>
-      <h2 class='text-left tiers-title'>Tiers</h2>    
-      <ul class='tiers-info'>{tiers}</ul>
+    <div className='tiers-container'>
+      <h2 className='text-left tiers-title'>Tiers</h2>    
+      <ul className='tiers-info'>{tiers}</ul>
 
     </div>
   )

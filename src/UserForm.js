@@ -30,7 +30,6 @@ export default function UserForm(props) {
 
   const handleNameChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
-    console.log('props', props)
     debugger
     props.allFunc.handleNameChange(event.target.value)
   };
