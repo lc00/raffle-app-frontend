@@ -1,24 +1,23 @@
 import React from "react";  
 import "./App.css";
-// import payloadSample from './payloadSample'
+import payloadSample from './payloadSample'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './Home'
 import Summary from './Summary'
-import axios from 'axios'
+// import axios from 'axios'
 
 class App extends React.Component {
   constructor() {
     super()
 
     this.state ={
-      name: "",
-      email: "",
-      donationAmount: "",
+      name: "meow",
+      email: "me@ow.com",
+      donationAmount: "1",
       topMessage: "",
       tiers: [],
       prizes: [],
-      ticketNum: 0,
       entries: {
 
       }      
@@ -90,36 +89,16 @@ class App extends React.Component {
     if(num === '') num = 0
 
     num = Math.abs(parseInt(num))
-      // let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
-
-      // newPrizes.forEach(prize => {
-      //   if(prize.id === prizeId) {
-      //     return prize['currentUserTicketsEntered'] = num
-      //   }
-      // })
-
-      /*
-        entries: {
-          id: num
-        }
-      */
-
+      
       const entries = {...this.state.entries, [prizeId+'']: num}
       
-      this.setState({entries: entries})
-    
-      
+      this.setState({entries})
+     
   }
 
   handleClearTicketNum = () => {
-
-
-    
-    this.setState({entries: {}})
-
-      
+    this.setState({entries: {}})  
   }
-
 
   checkTicketsEntered = () => {
     let [result] = this.checkUserInfo()
@@ -177,46 +156,46 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    axios.get('https://localhost:8000/')
-      .then(response => {
-        console.log(`first load, response.data, ${response.data}`)
+    // axios.get('https://localhost:8000/')
+    //   .then(response => {
+    //     console.log(`first load, response.data, ${response.data}`)
 
-        let initialPayLoad = response.data
-        console.log('initialPayLoad', initialPayLoad)
+    //     let initialPayLoad = response.data
+    //     console.log('initialPayLoad', initialPayLoad)
     
-        let tiers = {}
-        initialPayLoad.tiers.forEach(tier => {
-          tiers[parseInt(tier['amount'])] = tier['tickets']
-        })
+    //     let tiers = {}
+    //     initialPayLoad.tiers.forEach(tier => {
+    //       tiers[parseInt(tier['amount'])] = tier['tickets']
+    //     })
     
-        this.setState({
-          prizes: initialPayLoad.prizes,
-          tiers: tiers
+    //     this.setState({
+    //       prizes: initialPayLoad.prizes,
+    //       tiers: tiers
     
-        })
+    //     })
 
-      })
-      .catch(err => {
-        console.error(`first load, error ${err}`)
-      })
+    //   })
+    //   .catch(err => {
+    //     console.error(`first load, error ${err}`)
+    //   })
 
       /* 
       this is the temp code to retrieve mock data 
       */
-    // let response = payloadSample()
-    // let initialPayLoad = response.initialPayLoad
-    // console.log('initialPayLoad', initialPayLoad)
+    let response = payloadSample()
+    let initialPayLoad = response.initialPayLoad
+    console.log('initialPayLoad', initialPayLoad)
 
-    // let tiers = {}
-    // initialPayLoad.tiers.forEach(tier => {
-    //   tiers[parseInt(tier['amount'])] = tier['tickets']
-    // })
+    let tiers = {}
+    initialPayLoad.tiers.forEach(tier => {
+      tiers[parseInt(tier['amount'])] = tier['tickets']
+    })
 
-    // this.setState({
-    //   prizes: initialPayLoad.prizes,
-    //   tiers: tiers
+    this.setState({
+      prizes: initialPayLoad.prizes,
+      tiers: tiers
 
-    // })
+    })
   }
 
 

@@ -9,9 +9,10 @@ export default function Prizes(props) {
   
 
 
+  console.log('props', props)
   return (
     props.info.prizes.map(prize => {
-      return <Prize key={prize.id} info={props.info} allFunc={props.allFunc}
+      return <Prize key={prize.id} allFunc={props.allFunc}
       isUserInfoAllEntered={isUserInfoAllEntered} {...props} {...prize}
       />
     })
