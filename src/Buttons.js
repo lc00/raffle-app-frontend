@@ -19,29 +19,29 @@ export default function Buttons(props) {
   const classes = useStyles();
 
   const handleSubmitButton = () => {
-    const url = `https://localhost:8000/raffles/${props.info.id}/entry`
+    const url = `https://localhost:8000/raffles/${props.id}/entry`
     const entries = []
 
     console.log('props', props)
 
-    for (let i in props.info.entries) {
+    for (let i in props.entries) {
       entries.push(
         {
           prize: {
             id: i
           },
-          tickets: props.info.entries[i]
+          tickets: props.entries[i]
         }
       )
     }
 
     const info = {
       user: {
-        name: props.info.name,
-        email: props.info.email
+        name: props.name,
+        email: props.email
       },
       donation: {
-        amount: props.info.donationAmount
+        amount: props.donationAmount
       },
       entries: entries
     }
@@ -61,7 +61,7 @@ export default function Buttons(props) {
   }
 
 
-  let result = props.allFunc.checkTicketsEntered()
+  let result = props.checkTicketsEntered()
 
   if (result === 0) result = true
   else              result = false
@@ -71,7 +71,7 @@ export default function Buttons(props) {
       <Button
         variant="contained"
         color="primary"
-        // disabled={!result}
+        // disabled={!result} 
         className={classes.button}
         onClick={handleSubmitButton}
       >
@@ -82,7 +82,7 @@ export default function Buttons(props) {
         color="primary"
         // disabled={!result}
         className={classes.button}
-        onClick={props.allFunc.handleClearTicketNum}
+        onClick={props.handleClearTicketNum}
       >
         Clear Tickets
       </Button>

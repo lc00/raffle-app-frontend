@@ -207,7 +207,7 @@ class App extends React.Component {
               exact
               path='/' 
               render={() => (
-                <Home info={this.state} allFunc={this.allFunc()} {...this.state}/>
+                <Home {...this.allFunc()}  {...this.state}/>
               )}
             />
 

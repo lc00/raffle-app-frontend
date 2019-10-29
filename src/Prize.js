@@ -25,7 +25,7 @@ export default function Prize(props) {
   let entry = props.entries[props.id] 
     ? props.entries[props.id]
     : ''
-
+console.log('prize props', props)
   return (
     <div className='prize-container'>
       <h4>{props.name}</h4>
@@ -42,8 +42,7 @@ export default function Prize(props) {
           inputProps={{ 'aria-label': 'bare' }}
           value={entry}
           onChange={(e) => {
-            // props.allFunc.setTicketNum(e.target.value)
-            props.allFunc.handleTicketNumEntered(props.id, e.target.value)
+            props.handleTicketNumEntered(props.id, e.target.value)
           }
         }
           

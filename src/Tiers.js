@@ -3,8 +3,8 @@ import React from "react";
 export default function Tiers(props) {
   const tiers = []
 
-  for(let i in props.info.tiers) {
-    tiers.push(<div key={i} className='tier'>${i}: {props.info.tiers[i]} tickets</div>)
+  for(let i in props.tiers) {
+    tiers.push(<div key={i} className='tier'>${i}: {props.tiers[i]} tickets</div>)
   }
 
   return (
