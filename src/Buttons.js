@@ -22,8 +22,6 @@ export default function Buttons(props) {
     const url = `https://localhost:8000/raffles/${props.id}/entry`
     const entries = []
 
-    console.log('props', props)
-
     for (let i in props.entries) {
       entries.push(
         {
@@ -48,16 +46,20 @@ export default function Buttons(props) {
 
     console.log('info', info)
 
-    axios.post(url, info)
-      .then(response => {
-        console.log(`post request, response.data, ${response.data}`)
-        history.push('/summary')
-      })
-      .catch(err => {
-        console.error(`post request, error ${err}`)
-      })
-    
+    // axios.post(url, info)
+    //   .then(response => {
+    //     console.log(`post request, response.data, ${response.data}`)
+    //     history.push('/summary')
+    //   })
+    //   .catch(err => {
+    //     console.error(`post request, error ${err}`)
+    //    alert('Somethng went wrong. Please notify the Admin')
+    //   })
 
+    /*
+    mocking successful post request
+    */
+    history.push('/summary')
   }
 
 

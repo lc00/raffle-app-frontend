@@ -6,15 +6,14 @@ export default function Prizes(props) {
   let isUserInfoAllEntered = false
 
   result === 0 ? isUserInfoAllEntered = true : isUserInfoAllEntered = false
-  
 
-
-  console.log('props', props)
   return (
     props.prizes.map(prize => {
       return <Prize key={prize.id} 
-      isUserInfoAllEntered={isUserInfoAllEntered} {...props} {...prize}
+        isUserInfoAllEntered={isUserInfoAllEntered} {...props} {...prize}
       />
     })
   )
 }
+
+

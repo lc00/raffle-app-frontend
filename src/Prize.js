@@ -25,7 +25,7 @@ export default function Prize(props) {
   let entry = props.entries[props.id] 
     ? props.entries[props.id]
     : ''
-console.log('prize props', props)
+    
   return (
     <div className='prize-container'>
       <h4>{props.name}</h4>
