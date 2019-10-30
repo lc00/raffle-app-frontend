@@ -44,22 +44,21 @@ export default function Buttons(props) {
       entries: entries
     }
 
-    console.log('info', info)
 
-    // axios.post(url, info)
-    //   .then(response => {
-    //     console.log(`post request, response.data, ${response.data}`)
-    //     history.push('/summary')
-    //   })
-    //   .catch(err => {
-    //     console.error(`post request, error ${err}`)
-    //    alert('Somethng went wrong. Please notify the Admin')
-    //   })
+    axios.post(url, info)
+      .then(response => {
+        console.log(`post request, response.data, ${response.data}`)
+        history.push('/summary')
+      })
+      .catch(err => {
+        console.error(`post request, error ${err}`)
+       alert('Somethng went wrong. Please notify the Admin')
+      })
 
     /*
     mocking successful post request
     */
-    history.push('/summary')
+    // history.push('/summary')
   }
 
 
@@ -73,7 +72,7 @@ export default function Buttons(props) {
       <Button
         variant="contained"
         color="primary"
-        // disabled={!result} 
+        disabled={!result} 
         className={classes.button}
         onClick={handleSubmitButton}
       >
@@ -82,7 +81,7 @@ export default function Buttons(props) {
       <Button
         variant="contained"
         color="primary"
-        // disabled={!result}
+        disabled={!result}
         className={classes.button}
         onClick={props.handleClearTicketNum}
       >
