@@ -9,7 +9,7 @@ export default function Summary(props) {
 
     if(prize) {
       prize['entry'] = props.entries[key]
-      prizeArr.push(<PrizeInSummmary prize={prize}/>) 
+      prizeArr.push(<PrizeInSummmary key={key} prize={prize}/>) 
     }
     else  {
       console.error(`Summary | getPrizeInfo error: cannot find a matched id in prizes`)
@@ -23,7 +23,7 @@ export default function Summary(props) {
       <h3>Here's your summary:</h3>
       <h5>name: {props.name}</h5>
       <h5>email: {props.email}</h5>
-      <h5>donation: {props.donationAmount}</h5>
+      <h5>donation: ${props.donationAmount}</h5>
       <div className='prizes-container'>
         {prizeArr}
       </div>

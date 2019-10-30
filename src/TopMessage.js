@@ -2,11 +2,11 @@ import React from "react";
 
 export default function TopMessage(props) {
   let newStr = "Please enter your ";
-  const [result, arr] = props.allFunc.checkUserInfo(props.info)
+  const [result, arr] = props.checkUserInfo(props)
 
   switch (result) {
     case 0:
-        let number = props.info.tiers[props.info.donationAmount]
+        let number = props.tiers[props.donationAmount]
         newStr = `Thanks! You have ${number} tickets to spend.`;
         break;
     case 1:

@@ -1,7 +1,6 @@
 import React from "react";  
 
 export default function PrizeInSummary (props) {
-  console.log('props', props)
   return (
     <div>
       <h5>

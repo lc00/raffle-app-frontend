@@ -18,7 +18,6 @@ class App extends React.Component {
       topMessage: "",
       tiers: [],
       prizes: [],
-      ticketNum: 0,
       entries: {
 
       }      
@@ -90,36 +89,16 @@ class App extends React.Component {
     if(num === '') num = 0
 
     num = Math.abs(parseInt(num))
-      // let newPrizes = JSON.parse(JSON.stringify(this.state.prizes))
-
-      // newPrizes.forEach(prize => {
-      //   if(prize.id === prizeId) {
-      //     return prize['currentUserTicketsEntered'] = num
-      //   }
-      // })
-
-      /*
-        entries: {
-          id: num
-        }
-      */
-
+      
       const entries = {...this.state.entries, [prizeId+'']: num}
       
-      this.setState({entries: entries})
-    
-      
+      this.setState({entries})
+     
   }
 
   handleClearTicketNum = () => {
-
-
-    
-    this.setState({entries: {}})
-
-      
+    this.setState({entries: {}})  
   }
-
 
   checkTicketsEntered = () => {
     let [result] = this.checkUserInfo()
@@ -228,7 +207,7 @@ class App extends React.Component {
               exact
               path='/' 
               render={() => (
-                <Home info={this.state} allFunc={this.allFunc()} {...this.state}/>
+                <Home {...this.allFunc()}  {...this.state}/>
               )}
             />
 
@@ -244,7 +223,6 @@ class App extends React.Component {
         </div>
       )
     }
-  
 }
 
 export default App;
