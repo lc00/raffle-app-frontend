@@ -12,9 +12,9 @@ class App extends React.Component {
     super()
 
     this.state ={
-      name: "meow",
-      email: "me@ow.com",
-      donationAmount: "1",
+      name: "",
+      email: "",
+      donationAmount: "",
       topMessage: "",
       tiers: [],
       prizes: [],
