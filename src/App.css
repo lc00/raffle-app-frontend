@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #b1d0e2;
 }
 
 .top-container {
@@ -30,7 +31,6 @@
 
 .text-left {
   text-align: left;
-
 }
 
 .tiers-title {
@@ -45,7 +45,7 @@
 }
 
 .padding-right-50 {
-  padding-right: 50px
+  padding-right: 50px;
 }
 
 .prize-container {
