@@ -1,58 +1,56 @@
-import React from "react";  
+import React from "react";
 import "./App.css";
-import payloadSample from './payloadSample'
+import payloadSample from "./payloadSample";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from './Home'
-import Summary from './Summary'
+import Home from "./Home";
+import Summary from "./Summary";
 // import axios from 'axios'
 
 class App extends React.Component {
   constructor() {
-    super()
+    super();
 
-    this.state ={
+    this.state = {
       name: "meow",
       email: "me@ow.com",
-      donationAmount: "1",
+      donationAmount: "",
       topMessage: "",
       tiers: [],
       prizes: [],
-      entries: {
-
-      }      
-    }
+      entries: {},
+    };
   }
 
   setTicketNum = (ticketNum) => {
     // const [ticketNum, setTicketNum] = useState("")
-    this.setState({ticketNum: ticketNum})
-  }
+    this.setState({ ticketNum: ticketNum });
+  };
 
   handleNameChange = (name) => {
-    this.setState({name: name})
+    this.setState({ name: name });
   };
 
   handleEmailChange = (email) => {
-    this.setState({email: email})
+    this.setState({ email: email });
   };
 
-  handleDonationAmountChange = (donationAmount) =>{
-    this.setState({donationAmount: donationAmount})
+  handleDonationAmountChange = (donationAmount) => {
+    this.setState({ donationAmount: donationAmount });
   };
 
   handleTicketInputEnable = (isEnabled) => {
-    this.setState({isTicketInputEnabled: isEnabled})
-  }
+    this.setState({ isTicketInputEnabled: isEnabled });
+  };
 
   validateEmail = (email) => {
-    return email.match(/\w+@\w+[.]\w+/)
-  }
+    return email.match(/\w+@\w+[.]\w+/);
+  };
 
   checkUserInfo = () => {
-    let name = this.state.name
-    let email = this.state.email
-    let donationAmount = this.state.donationAmount
+    let name = this.state.name;
+    let email = this.state.email;
+    let donationAmount = this.state.donationAmount;
 
     let arr = [];
     let emailValidated = false;
@@ -64,79 +62,74 @@ class App extends React.Component {
       if (!emailValidated) arr.push("email");
     }
     if (!donationAmount) arr.push("donation");
-  
-    let result 
+
+    let result;
 
     switch (arr.length) {
       case 1:
-        result = 1
+        result = 1;
         break;
       case 2:
-          result = 2
+        result = 2;
         break;
       case 3:
-          result = 3
+        result = 3;
         break;
       case 0:
       default:
-          result = 0
+        result = 0;
         break;
     }
-    return [result, arr]
-  }
+    return [result, arr];
+  };
 
   handleTicketNumEntered = (prizeId, num) => {
-    if(num === '') num = 0
+    if (num === "") num = 0;
 
-    num = Math.abs(parseInt(num))
-      
-      const entries = {...this.state.entries, [prizeId+'']: num}
-      
-      this.setState({entries})
-     
-  }
+    num = Math.abs(parseInt(num));
+
+    const entries = { ...this.state.entries, [prizeId + ""]: num };
+
+    this.setState({ entries });
+  };
 
   handleClearTicketNum = () => {
-    this.setState({entries: {}})  
-  }
+    this.setState({ entries: {} });
+  };
 
   checkTicketsEntered = () => {
-    let [result] = this.checkUserInfo()
-    let totalNum = this.state.tiers[this.state.donationAmount]
+    let [result] = this.checkUserInfo();
+    let totalNum = this.state.tiers[this.state.donationAmount];
 
     const reducer = (accumulator, val) => {
-      return accumulator + val
+      return accumulator + val;
+    };
+
+    const values = Object.values(this.state.entries);
+
+    let ticketNumEntered = values.reduce(reducer, 0);
+    let calResult = totalNum - ticketNumEntered;
+    let response = null;
+
+    if (result === 0) {
+      if (calResult === 0) response = 0;
+      else if (calResult > 0) response = calResult;
+      else if (calResult < 0) response = calResult;
+      //
+      else response = null;
     }
 
-    const values = Object.values(this.state.entries)
-
-    let ticketNumEntered = values.reduce(reducer, 0)
-    let calResult = totalNum - ticketNumEntered
-    let response = null
-
-    if(result === 0) {
-      if(calResult === 0)
-        response = 0
-      else if (calResult > 0)
-        response = calResult
-      else if (calResult < 0)
-        response = calResult
-      // 
-      else 
-        response = null
-    }
-    
-    return response
-  }
+    return response;
+  };
 
   getPrizeInfo = (id) => {
-    for(let i = 0; i <= this.state.prizes.length; i++) {
-      if(this.state.prizes[i].id === parseInt(id)) {
-        return this.state.prizes[i]
+    for (let i = 0; i <= this.state.prizes.length; i++) {
+      if (this.state.prizes[i].id === parseInt(id)) {
+        return this.state.prizes[i];
       }
     }
-    return null
-  }
+    return null;
+  };
 
   allFunc() {
     return {
@@ -150,10 +143,9 @@ class App extends React.Component {
       handleTicketNumEntered: this.handleTicketNumEntered,
       handleClearTicketNum: this.handleClearTicketNum,
       setTicketNum: this.setTicketNum,
-      getPrizeInfo: this.getPrizeInfo
-    }
+      getPrizeInfo: this.getPrizeInfo,
+    };
   }
-
 
   componentDidMount() {
     // axios.get('https://localhost:8000/')
@@ -162,16 +154,16 @@ class App extends React.Component {
 
     //     let initialPayLoad = response.data
     //     console.log('initialPayLoad', initialPayLoad)
-    
+
     //     let tiers = {}
     //     initialPayLoad.tiers.forEach(tier => {
     //       tiers[parseInt(tier['amount'])] = tier['tickets']
     //     })
-    
+
     //     this.setState({
     //       prizes: initialPayLoad.prizes,
     //       tiers: tiers
-    
+
     //     })
 
     //   })
@@ -179,50 +171,42 @@ class App extends React.Component {
     //     console.error(`first load, error ${err}`)
     //   })
 
-      /* 
+    /* 
       this is the temp code to retrieve mock data 
       */
-    let response = payloadSample()
-    let initialPayLoad = response.initialPayLoad
-    console.log('initialPayLoad', initialPayLoad)
+    let response = payloadSample();
+    let initialPayLoad = response.initialPayLoad;
+    console.log("initialPayLoad", initialPayLoad);
 
-    let tiers = {}
-    initialPayLoad.tiers.forEach(tier => {
-      tiers[parseInt(tier['amount'])] = tier['tickets']
-    })
+    let tiers = {};
+    initialPayLoad.tiers.forEach((tier) => {
+      tiers[parseInt(tier["amount"])] = tier["tickets"];
+    });
 
     this.setState({
       prizes: initialPayLoad.prizes,
-      tiers: tiers
-
-    })
+      tiers: tiers,
+    });
   }
 
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Route
+            exact
+            path="/"
+            render={() => <Home {...this.allFunc()} {...this.state} />}
+          />
 
-    render() {
-      return (
-        <div className="App">
-          <Router>
-            <Route 
-              exact
-              path='/' 
-              render={() => (
-                <Home {...this.allFunc()}  {...this.state}/>
-              )}
-            />
-
-            <Route 
-              path='/summary'
-              render={() => (
-                <Summary {...this.state} {...this.allFunc()} />
-              )}
-            />
-          </Router>
-
-          
-        </div>
-      )
-    }
+          <Route
+            path="/summary"
+            render={() => <Summary {...this.state} {...this.allFunc()} />}
+          />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
